@@ -22,7 +22,7 @@ export default function TechStackSection() {
 
   return (
     <section id="skills" className="py-20 px-6 relative">
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-6xl mx-auto relative z-10">
         <ScrollTriggeredAnimation animation="fadeUp" className="text-center mb-16">
           <motion.h2
             className="text-4xl md:text-5xl font-bold mb-6"
@@ -56,14 +56,14 @@ export default function TechStackSection() {
                   ease: "linear",
                 },
               }}
-              className="flex gap-8 will-change-transform"
-              style={{ width: `${infiniteStack.length * 250}px` }}
+              className="flex gap-6 will-change-transform"
+              style={{ width: `${infiniteStack.length * 200}px` }}
             >
               {infiniteStack.map((tech, index) => {
                 const Icon = tech.icon
                 return (
                   <div key={`${tech.name}-${index}`} className="flex-shrink-0">
-                    <Card className="w-56 h-40 bg-black/20 backdrop-blur-xl border border-white/10 hover:border-orange-500/30 transition-all duration-500 shadow-2xl transform-gpu group">
+                    <Card className="w-48 h-36 bg-black/20 backdrop-blur-xl border border-white/10 hover:border-orange-500/30 transition-all duration-500 shadow-2xl transform-gpu group">
                       <CardContent className="flex flex-col items-center justify-center h-full p-6 relative overflow-hidden">
                         <motion.div
                           className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
@@ -71,7 +71,7 @@ export default function TechStackSection() {
                         />
 
                         <motion.div
-                          className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${tech.color} flex items-center justify-center mb-4 shadow-2xl relative z-10`}
+                          className={`w-14 h-14 rounded-2xl bg-gradient-to-r ${tech.color} flex items-center justify-center mb-4 shadow-2xl relative z-10`}
                           whileHover={{
                             rotate: 360,
                             scale: 1.2,
@@ -79,7 +79,7 @@ export default function TechStackSection() {
                           }}
                           transition={{ duration: 0.6, ease: "easeInOut" }}
                         >
-                          <Icon className="w-8 h-8 text-white" />
+                          <Icon className="w-7 h-7 text-white" />
                         </motion.div>
 
                         <h3 className="bg-gradient-to-r from-white to-zinc-300 bg-clip-text text-transparent font-semibold text-lg relative z-10">
