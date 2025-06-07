@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import {
   BarChart3,
@@ -18,6 +19,23 @@ import {
   Target,
   Layers,
   GitBranch,
+  BarChartIcon as ChartBar,
+  Network,
+  Cpu,
+  Workflow,
+  Binary,
+  Sigma,
+  Infinity,
+  Microscope,
+  Atom,
+  Braces,
+  Hash,
+  Gauge,
+  BarChart,
+  BarChart2,
+  BarChart4,
+  PieChartIcon as PieChart2,
+  LineChartIcon as LineChart2,
 } from "lucide-react"
 
 const backgroundIcons = [
@@ -37,9 +55,49 @@ const backgroundIcons = [
   Target,
   Layers,
   GitBranch,
+  ChartBar,
+  Network,
+  Cpu,
+  Workflow,
+  Binary,
+  Sigma,
+  Infinity,
+  Microscope,
+  Atom,
+  Braces,
+  Hash,
+  Gauge,
+  BarChart,
+  BarChart2,
+  BarChart4,
+  PieChart2,
+  LineChart2,
 ]
 
 export default function UnifiedBackground() {
+  const [dimensions, setDimensions] = useState({
+    width: typeof window !== "undefined" ? window.innerWidth : 1920,
+    height: typeof window !== "undefined" ? window.innerHeight : 1080,
+  })
+
+  useEffect(() => {
+    const handleResize = () => {
+      setDimensions({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      })
+    }
+
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
+
+  // Calculate number of icons based on screen size
+  const iconCount = Math.max(50, Math.floor((dimensions.width * dimensions.height) / 20000))
+
+  // Calculate number of shapes based on screen size
+  const shapeCount = Math.max(30, Math.floor((dimensions.width * dimensions.height) / 30000))
+
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
       {/* Base gradient */}
@@ -47,14 +105,29 @@ export default function UnifiedBackground() {
 
       {/* Static positioned icons with simple animations */}
       <div className="absolute inset-0">
-        {[...Array(50)].map((_, i) => {
+        {[...Array(iconCount)].map((_, i) => {
           const Icon = backgroundIcons[i % backgroundIcons.length]
-          const size = 24 + (i % 4) * 8 // Fixed sizes: 24, 32, 40, 48
+          const size = 24 + (i % 5) * 8 // Fixed sizes: 24, 32, 40, 48, 56
           const isOrange = i % 5 === 0 // Every 5th icon is orange
 
-          // Fixed positions based on index
-          const x = (i % 10) * 120 + 50 + (i % 3) * 30
-          const y = Math.floor(i / 10) * 100 + 50 + (i % 2) * 40
+          // Calculate positions to cover the entire screen evenly
+          // Create a grid-like distribution but with some variation
+          const cols = Math.ceil(Math.sqrt(iconCount) * 1.5)
+          const rows = Math.ceil(iconCount / cols)
+
+          const colIndex = i % cols
+          const rowIndex = Math.floor(i / cols)
+
+          // Calculate base position
+          const baseX = (dimensions.width / cols) * colIndex
+          const baseY = (dimensions.height / rows) * rowIndex
+
+          // Add some variation to avoid perfect grid alignment
+          const variationX = ((i * 13) % 100) - 50
+          const variationY = ((i * 17) % 100) - 50
+
+          const x = baseX + variationX
+          const y = baseY + variationY
 
           return (
             <motion.div
@@ -86,15 +159,29 @@ export default function UnifiedBackground() {
 
       {/* Static geometric shapes */}
       <div className="absolute inset-0">
-        {[...Array(30)].map((_, i) => {
+        {[...Array(shapeCount)].map((_, i) => {
           const shapes = ["circle", "square", "triangle"]
           const shape = shapes[i % shapes.length]
-          const size = 4 + (i % 3) * 2 // Fixed sizes: 4, 6, 8
+          const size = 6 + (i % 4) * 3 // Fixed sizes: 6, 9, 12, 15
           const isOrange = i % 6 === 0
 
-          // Fixed positions
-          const x = (i % 6) * 200 + 80 + (i % 2) * 50
-          const y = Math.floor(i / 6) * 120 + 80 + (i % 3) * 30
+          // Calculate positions to cover the entire screen evenly
+          const cols = Math.ceil(Math.sqrt(shapeCount) * 1.5)
+          const rows = Math.ceil(shapeCount / cols)
+
+          const colIndex = i % cols
+          const rowIndex = Math.floor(i / cols)
+
+          // Calculate base position with offset from icons
+          const baseX = (dimensions.width / cols) * colIndex + 50
+          const baseY = (dimensions.height / rows) * rowIndex + 50
+
+          // Add some variation
+          const variationX = ((i * 19) % 100) - 50
+          const variationY = ((i * 23) % 100) - 50
+
+          const x = baseX + variationX
+          const y = baseY + variationY
 
           return (
             <motion.div
