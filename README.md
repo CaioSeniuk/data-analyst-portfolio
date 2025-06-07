@@ -1,24 +1,32 @@
 # Data Analyst Portfolio Website
 
-A modern, interactive portfolio website built with Next.js, React, and Framer Motion, specifically designed for data analysts and business intelligence professionals.
+A modern, interactive portfolio website built with Next.js, React, and Tailwind CSS, specifically designed for data analysts and business intelligence professionals.
 
 ## 🚀 Features
 
+- **Responsive Design**: Fully responsive layout that works on all devices
+- **Dark Theme**: Sleek dark theme with orange accents
+- **Interactive UI**: Smooth animations and transitions
+- **Modern Tech Stack**: Built with Next.js, React, and Tailwind CSS
+- **Performance Optimized**: Fast loading times and optimized assets
+- **SEO Friendly**: Built with SEO best practices in mind
+- **Accessibility**: WCAG compliant for better accessibility
+- **Easy to Customize**: Well-organized code structure for easy customization
+
 ### Core Functionality
-- **Responsive Design**: Fully responsive across all devices
-- **Dark Theme**: Professional black theme with orange accent colors
-- **Smooth Animations**: Powered by Framer Motion for engaging user experience
-- **Interactive Elements**: Hover effects, particle animations, and micro-interactions
+- **Hover Effects**: Subtle scale and glow effects
+- **Particle Animations**: Interactive background elements
+- **Micro-interactions**: Enhancing user engagement
 - **Contact Form**: Functional contact form with email integration
 
 ### Sections
-1. **Hero Section**: Animated typing effect with compelling headline
-2. **Tech Stack Carousel**: Infinite scrolling carousel of technologies
-3. **Statistics Section**: Animated counters showing impact metrics
+1. **Hero Section**: Eye-catching introduction with animated text and background particles
+2. **Tech Stack Carousel**: Interactive carousel showcasing technical skills
+3. **Statistics Section**: Animated statistics highlighting achievements
 4. **Skills Progress**: Animated progress bars for skill proficiency
-5. **Projects Showcase**: Featured projects with live demo links
-6. **About Section**: Professional background and competencies
-7. **Contact Form**: Interactive form with validation and animations
+5. **Projects Showcase**: Featured data analysis projects with descriptions and links
+6. **About Section**: Professional background with downloadable resume options
+7. **Contact Form**: Contact form and social media links
 
 ## 🛠 Tech Stack
 
@@ -78,6 +86,9 @@ A modern, interactive portfolio website built with Next.js, React, and Framer Mo
 1. **Contact Email**: Update in `components/contact-section.tsx` and `components/footer.tsx`
 2. **Social Links**: Modify LinkedIn/GitHub URLs in `components/footer.tsx`
 3. **Professional Background**: Edit content in `components/about-section.tsx`
+4. **Hero Section**: Update name and tagline in `components/hero-section.tsx`
+5. **Projects Section**: Update project details in `components/projects-section.tsx`
+6. **Statistics Section**: Update statistics in `components/stats-section.tsx`
 
 ### Modifying Tech Stack
 
@@ -144,6 +155,13 @@ const skills = [
   // Add more skills...
 ]
 \`\`\`
+
+### Styling
+
+The project uses Tailwind CSS for styling. You can customize the theme in:
+
+- `tailwind.config.ts`: Update theme colors and other configurations
+- `app/globals.css`: Update global styles and custom CSS
 
 ## 🎯 Animation Configuration
 
@@ -220,6 +238,11 @@ This project is open source and available under the MIT License.
 ## 🤝 Contributing
 
 Feel free to submit issues and enhancement requests!
+
+## Acknowledgments
+
+- Design inspired by modern portfolio trends
+- Icons from [Lucide React](https://lucide.dev/)
 
 ---
 
