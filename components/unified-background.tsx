@@ -49,7 +49,7 @@ export default function UnifiedBackground() {
       <div className="absolute inset-0">
         {[...Array(50)].map((_, i) => {
           const Icon = backgroundIcons[i % backgroundIcons.length]
-          const size = 12 + (i % 4) * 4 // Fixed sizes: 12, 16, 20, 24
+          const size = 24 + (i % 4) * 8 // Fixed sizes: 24, 32, 40, 48
           const isOrange = i % 5 === 0 // Every 5th icon is orange
 
           // Fixed positions based on index
