@@ -1,99 +1,160 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Card, CardContent } from "@/components/ui/card"
-import { Database, BarChart3, FileSpreadsheet, Activity, Code, Cloud, Server, Brain, Zap } from "lucide-react"
-import ScrollTriggeredAnimation from "./scroll-triggered-animation"
+import {
+  Database,
+  BarChart3,
+  Cloud,
+  Server,
+  Code,
+  FileSpreadsheet,
+  Activity,
+  TrendingUp,
+  Calculator,
+  Network,
+  Target,
+  Settings,
+  Monitor,
+  HardDrive,
+  Play,
+} from "lucide-react"
 
+// TECH STACK CONFIGURATION
+// CUSTOMIZABLE: Add, remove, or modify technologies here
 const techStack = [
-  { name: "Python", icon: Code, color: "from-yellow-400 to-blue-500" },
-  { name: "SQL", icon: Database, color: "from-blue-400 to-cyan-400" },
+  // DATA ANALYSIS & VISUALIZATION
+  { name: "Python", icon: Code, color: "from-blue-400 to-yellow-400" },
+  { name: "R", icon: BarChart3, color: "from-blue-500 to-blue-600" },
+  { name: "Tableau", icon: Activity, color: "from-blue-400 to-orange-400" },
   { name: "Power BI", icon: BarChart3, color: "from-yellow-400 to-orange-500" },
-  { name: "Excel", icon: FileSpreadsheet, color: "from-green-400 to-emerald-500" },
-  { name: "Tableau", icon: Activity, color: "from-blue-500 to-purple-500" },
-  { name: "Pandas", icon: Brain, color: "from-purple-400 to-pink-400" },
-  { name: "MATLAB", icon: Zap, color: "from-orange-400 to-red-500" },
+  { name: "Pandas", icon: Database, color: "from-purple-400 to-pink-400" },
+  { name: "NumPy", icon: Calculator, color: "from-blue-400 to-cyan-400" },
+
+  // DATABASES
+  { name: "MySQL", icon: Database, color: "from-blue-500 to-orange-500" },
+  { name: "PostgreSQL", icon: HardDrive, color: "from-blue-400 to-blue-600" },
+  // { name: "MongoDB", icon: Layers, color: "from-green-400 to-green-600" }, // COMMENTED OUT AS REQUESTED
+
+  // CLOUD PLATFORMS
+  { name: "AWS", icon: Cloud, color: "from-orange-400 to-orange-600" },
   { name: "Azure", icon: Cloud, color: "from-blue-400 to-blue-600" },
-  { name: "AWS", icon: Server, color: "from-orange-400 to-yellow-500" },
+  { name: "Google Cloud", icon: Server, color: "from-blue-400 to-green-400" },
+
+  // MACHINE LEARNING
+  // { name: "Scikit-learn", icon: Brain, color: "from-orange-400 to-blue-400" }, // COMMENTED OUT AS REQUESTED
+  // { name: "TensorFlow", icon: Cpu, color: "from-orange-400 to-orange-600" }, // COMMENTED OUT AS REQUESTED
+  // { name: "PyTorch", icon: Zap, color: "from-red-400 to-orange-400" }, // COMMENTED OUT AS REQUESTED
+
+  // TOOLS & PLATFORMS
+  { name: "Jupyter", icon: Monitor, color: "from-orange-400 to-gray-400" },
+  { name: "Docker", icon: Settings, color: "from-blue-400 to-blue-600" },
+  // { name: "Apache Spark", icon: Workflow, color: "from-orange-400 to-red-400" }, // COMMENTED OUT AS REQUESTED
+  // { name: "Airflow", icon: GitBranch, color: "from-blue-400 to-cyan-400" }, // COMMENTED OUT AS REQUESTED
+  { name: "Excel", icon: FileSpreadsheet, color: "from-green-400 to-green-600" },
+  { name: "MATLAB", icon: Target, color: "from-orange-400 to-red-500" },
+  { name: "Statistics", icon: TrendingUp, color: "from-purple-400 to-pink-400" },
+  { name: "Data Mining", icon: Network, color: "from-cyan-400 to-blue-400" },
+  { name: "Power Automate", icon: Play, color: "from-blue-500 to-purple-500" }, // ADDED AS REQUESTED
 ]
 
 export default function TechStackSection() {
-  const infiniteStack = [...techStack, ...techStack, ...techStack]
-
   return (
-    <section id="skills" className="py-20 px-6 relative">
-      <div className="max-w-6xl mx-auto relative z-10">
-        <ScrollTriggeredAnimation animation="fadeUp" className="text-center mb-16">
-          <motion.h2
-            className="text-4xl md:text-5xl font-bold mb-6"
-            whileInView={{ scale: [0.9, 1] }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-          >
-            <span className="bg-gradient-to-r from-white via-zinc-100 to-zinc-300 bg-clip-text text-transparent">
-              Technical{" "}
-            </span>
-            <span className="bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">
+    <section id="skills" className="py-20 lg:py-32 px-4 sm:px-6 lg:px-8 relative z-10">
+      {/* RESPONSIVE CONTAINER */}
+      {/* Optimized for 1920x1080 with full responsivity */}
+      <div className="max-w-7xl mx-auto">
+        {/* SECTION HEADER */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center mb-16 lg:mb-20"
+        >
+          {/* SECTION TITLE - SMALLER FONT */}
+          {/* CUSTOMIZABLE: Modify section title */}
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+            <span className="text-white">Technical </span>
+            <span className="bg-gradient-to-r from-orange-500 to-orange-400 bg-clip-text text-transparent">
               Expertise
             </span>
-          </motion.h2>
-          <p className="text-xl bg-gradient-to-r from-zinc-300 to-zinc-500 bg-clip-text text-transparent max-w-2xl mx-auto">
+          </h2>
+
+          {/* SECTION DESCRIPTION - SMALLER FONT */}
+          {/* CUSTOMIZABLE: Update description */}
+          <p className="text-sm sm:text-base md:text-lg text-zinc-400 max-w-3xl mx-auto">
             Leveraging cutting-edge technologies to deliver data-driven solutions
           </p>
-        </ScrollTriggeredAnimation>
+        </motion.div>
 
-        <ScrollTriggeredAnimation animation="scale" delay={0.3}>
-          <div className="relative overflow-hidden mask-gradient rounded-3xl bg-black/20 backdrop-blur-xl border border-white/10 p-8 shadow-2xl">
-            <div className="absolute inset-0 bg-gradient-to-r from-orange-500/5 via-transparent to-orange-500/5" />
+        {/* INFINITE CAROUSEL */}
+        {/* CUSTOMIZABLE: Adjust carousel speed and spacing */}
+        <div className="relative overflow-hidden">
+          {/* GRADIENT MASKS */}
+          {/* Creates fade effect on carousel edges */}
+          <div className="absolute left-0 top-0 bottom-0 w-20 sm:w-32 bg-gradient-to-r from-black to-transparent z-10" />
+          <div className="absolute right-0 top-0 bottom-0 w-20 sm:w-32 bg-gradient-to-l from-black to-transparent z-10" />
 
-            <motion.div
-              animate={{ x: [-100 * techStack.length, 0] }}
-              transition={{
-                x: {
-                  repeat: Number.POSITIVE_INFINITY,
-                  repeatType: "loop",
-                  duration: 30,
-                  ease: "linear",
-                },
-              }}
-              className="flex gap-6 will-change-transform"
-              style={{ width: `${infiniteStack.length * 200}px` }}
-            >
-              {infiniteStack.map((tech, index) => {
-                const Icon = tech.icon
-                return (
-                  <div key={`${tech.name}-${index}`} className="flex-shrink-0">
-                    <Card className="w-48 h-36 bg-black/20 backdrop-blur-xl border border-white/10 hover:border-orange-500/30 transition-all duration-500 shadow-2xl transform-gpu group">
-                      <CardContent className="flex flex-col items-center justify-center h-full p-6 relative overflow-hidden">
-                        <motion.div
-                          className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                          whileHover={{ scale: 1.1 }}
-                        />
-
-                        <motion.div
-                          className={`w-14 h-14 rounded-2xl bg-gradient-to-r ${tech.color} flex items-center justify-center mb-4 shadow-2xl relative z-10`}
-                          whileHover={{
-                            rotate: 360,
-                            scale: 1.2,
-                            y: -5,
-                          }}
-                          transition={{ duration: 0.6, ease: "easeInOut" }}
-                        >
-                          <Icon className="w-7 h-7 text-white" />
-                        </motion.div>
-
-                        <h3 className="bg-gradient-to-r from-white to-zinc-300 bg-clip-text text-transparent font-semibold text-lg relative z-10">
-                          {tech.name}
-                        </h3>
-                      </CardContent>
-                    </Card>
-                  </div>
-                )
-              })}
-            </motion.div>
-          </div>
-        </ScrollTriggeredAnimation>
+          {/* CAROUSEL CONTAINER - SLOWER SPEED AS REQUESTED */}
+          <motion.div
+            className="flex gap-6 sm:gap-8 md:gap-10"
+            animate={{
+              x: [0, -250 * techStack.length], // CUSTOMIZABLE: Adjust scroll distance
+            }}
+            transition={{
+              duration: 60, // SLOWER SPEED (60 seconds instead of 30)
+              repeat: Number.POSITIVE_INFINITY,
+              ease: "linear",
+            }}
+            style={{
+              width: `${250 * techStack.length * 2}px`, // Double width for seamless loop
+            }}
+          >
+            {/* FIRST SET OF CARDS */}
+            {techStack.map((tech, index) => (
+              <TechCard key={`first-${index}`} tech={tech} index={index} />
+            ))}
+            {/* DUPLICATE SET FOR SEAMLESS LOOP */}
+            {techStack.map((tech, index) => (
+              <TechCard key={`second-${index}`} tech={tech} index={index} />
+            ))}
+          </motion.div>
+        </div>
       </div>
     </section>
+  )
+}
+
+// TECH CARD COMPONENT
+// CUSTOMIZABLE: Modify card design and animations
+function TechCard({ tech, index }: { tech: any; index: number }) {
+  const Icon = tech.icon
+
+  return (
+    <motion.div
+      className="flex-shrink-0 w-56 sm:w-64 md:w-72 h-40 sm:h-44 md:h-48"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: index * 0.1 }}
+      viewport={{ once: true }}
+    >
+      {/* CARD CONTAINER */}
+      <div className="relative h-full bg-gradient-to-br from-zinc-900/50 to-zinc-800/50 backdrop-blur-sm border border-zinc-700/50 rounded-2xl p-6 sm:p-8 flex flex-col items-center justify-center group transition-all duration-300">
+        {/* ICON CONTAINER */}
+        {/* CUSTOMIZABLE: Adjust icon size and styling */}
+        <div
+          className={`w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 rounded-2xl bg-gradient-to-br ${tech.color} p-4 mb-4 group-hover:scale-110 transition-transform duration-300`}
+        >
+          <Icon className="w-full h-full text-white" />
+        </div>
+
+        {/* TECH NAME - SMALLER FONT */}
+        {/* CUSTOMIZABLE: Modify text styling */}
+        <h3 className="text-base sm:text-lg font-semibold text-white text-center">{tech.name}</h3>
+
+        {/* HOVER GLOW EFFECT */}
+        <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-orange-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      </div>
+    </motion.div>
   )
 }

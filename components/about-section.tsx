@@ -1,171 +1,165 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { BarChart3, Database, Brain, TrendingUp, Download } from "lucide-react"
+import { Download, Award, Briefcase, GraduationCap, MapPin } from "lucide-react"
+import Image from "next/image"
 
 export default function AboutSection() {
-  const achievements = [
-    {
-      icon: BarChart3,
-      title: "Business Intelligence",
-      description:
-        "Creating comprehensive dashboards and reports that transform raw data into strategic business insights.",
-    },
-    {
-      icon: Database,
-      title: "Data Processing",
-      description:
-        "Expert in data cleaning, transformation, and analysis using Python, SQL, and advanced statistical methods.",
-    },
-    {
-      icon: Brain,
-      title: "Predictive Analytics",
-      description:
-        "Developing machine learning models and predictive algorithms to forecast trends and identify opportunities.",
-    },
-    {
-      icon: TrendingUp,
-      title: "Performance Optimization",
-      description: "Analyzing business metrics and KPIs to identify areas for improvement and growth optimization.",
-    },
-  ]
-
-  const handleResumeDownload = () => {
-    // Create a temporary link to download resume
-    const link = document.createElement("a")
-    link.href = "/resume.pdf" // You'll need to add your resume file to the public folder
-    link.download = "Caio_Seniuk_Resume.pdf"
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
-  }
-
   return (
-    <section id="about" className="py-20 px-6 relative">
-      <div className="max-w-6xl mx-auto relative z-10">
+    <section id="about" className="py-20 lg:py-32 px-4 sm:px-6 lg:px-8 relative z-10">
+      {/* RESPONSIVE CONTAINER */}
+      {/* Optimized for 1920x1080 with full responsivity */}
+      <div className="max-w-7xl mx-auto">
+        {/* SECTION HEADER */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-16 lg:mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-white via-zinc-100 to-zinc-300 bg-clip-text text-transparent">
-              About{" "}
-            </span>
-            <span className="bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">Me</span>
+          {/* SECTION TITLE - SMALLER FONT */}
+          {/* CUSTOMIZABLE: Modify section title */}
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+            <span className="text-white">About </span>
+            <span className="bg-gradient-to-r from-orange-500 to-orange-400 bg-clip-text text-transparent">Me</span>
           </h2>
-          <p className="text-xl bg-gradient-to-r from-zinc-300 to-zinc-500 bg-clip-text text-transparent max-w-3xl mx-auto leading-relaxed">
-            As a Data Analyst, I specialize in transforming complex datasets into actionable business strategies. My
-            expertise lies in leveraging automation systems, IoT sensors, and real-time data collection to optimize
-            operational efficiency. I focus on predictive analytics, anomaly detection, and data-driven decision making
-            to enhance system performance and deliver measurable business outcomes through advanced statistical modeling
-            and machine learning algorithms.
+
+          {/* SECTION DESCRIPTION - SMALLER FONT */}
+          {/* CUSTOMIZABLE: Update description */}
+          <p className="text-sm sm:text-base md:text-lg text-zinc-400 max-w-3xl mx-auto">
+            Passionate data analyst with expertise in transforming complex data into actionable insights
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8 mb-16">
+        {/* MAIN CONTENT GRID */}
+        {/* RESPONSIVE: Stack on mobile, side-by-side on desktop */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* LEFT COLUMN - PROFILE IMAGE */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="flex justify-center"
+            className="relative"
           >
-            <div className="w-full max-w-md aspect-square rounded-2xl bg-gradient-to-br from-zinc-900/80 to-zinc-800/80 border border-zinc-700/50 overflow-hidden shadow-lg backdrop-blur-sm">
-              {/* Placeholder for photo */}
-              <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-orange-500/10 to-orange-600/5">
-                <span className="text-lg bg-gradient-to-r from-zinc-400 to-zinc-600 bg-clip-text text-transparent">
-                  Your photo here
-                </span>
+            {/* PROFILE IMAGE CONTAINER */}
+            {/* CUSTOMIZABLE: Replace with actual profile image */}
+            <div className="relative w-full max-w-md mx-auto lg:max-w-none">
+              <div className="aspect-square relative rounded-3xl overflow-hidden bg-gradient-to-br from-zinc-900/50 to-zinc-800/50 backdrop-blur-sm border border-zinc-700/50">
+                <Image
+                  src="/placeholder.svg?height=500&width=500"
+                  alt="Caio Seniuk - Data Analyst"
+                  fill
+                  className="object-cover"
+                />
+
+                {/* GRADIENT OVERLAY */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+              </div>
+
+              {/* FLOATING ELEMENTS */}
+              {/* CUSTOMIZABLE: Modify or remove decorative elements */}
+              <div className="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center">
+                <Award className="w-10 h-10 text-white" />
+              </div>
+
+              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center">
+                <Briefcase className="w-8 h-8 text-white" />
               </div>
             </div>
           </motion.div>
 
+          {/* RIGHT COLUMN - CONTENT */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
+            className="space-y-6 lg:space-y-8"
           >
-            <Card className="h-full bg-gradient-to-br from-zinc-900/80 to-zinc-800/80 border border-zinc-700/50 backdrop-blur-sm shadow-lg">
-              <CardContent className="p-8">
-                <h3 className="text-2xl font-bold mb-6">
-                  <span className="bg-gradient-to-r from-white to-zinc-300 bg-clip-text text-transparent">Core </span>
-                  <span className="bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">
-                    Competencies
-                  </span>
-                </h3>
-                <ul className="space-y-4 text-zinc-400 mb-8">
-                  <li className="flex items-start gap-3">
-                    <div className="w-2 h-2 rounded-full bg-gradient-to-r from-orange-400 to-orange-600 mt-2 flex-shrink-0 shadow-sm"></div>
-                    <span>Statistical analysis and hypothesis testing</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <div className="w-2 h-2 rounded-full bg-gradient-to-r from-orange-400 to-orange-600 mt-2 flex-shrink-0 shadow-sm"></div>
-                    <span>Data visualization and dashboard creation</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <div className="w-2 h-2 rounded-full bg-gradient-to-r from-orange-400 to-orange-600 mt-2 flex-shrink-0 shadow-sm"></div>
-                    <span>Machine learning and predictive modeling</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <div className="w-2 h-2 rounded-full bg-gradient-to-r from-orange-400 to-orange-600 mt-2 flex-shrink-0 shadow-sm"></div>
-                    <span>Business intelligence and reporting</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <div className="w-2 h-2 rounded-full bg-gradient-to-r from-orange-400 to-orange-600 mt-2 flex-shrink-0 shadow-sm"></div>
-                    <span>Database design and optimization</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <div className="w-2 h-2 rounded-full bg-gradient-to-r from-orange-400 to-orange-600 mt-2 flex-shrink-0 shadow-sm"></div>
-                    <span>A/B testing and performance analysis</span>
-                  </li>
-                </ul>
+            {/* INTRODUCTION - SMALLER FONT */}
+            {/* CUSTOMIZABLE: Update personal introduction */}
+            <div className="space-y-4">
+              <h3 className="text-xl sm:text-2xl font-bold text-white">Data-Driven Problem Solver</h3>
+              <p className="text-sm sm:text-base text-zinc-400 leading-relaxed">
+                With over 5 years of experience in data analysis and business intelligence, I specialize in transforming
+                raw data into strategic insights that drive business growth and operational efficiency.
+              </p>
+              <p className="text-sm sm:text-base text-zinc-400 leading-relaxed">
+                My expertise spans across statistical analysis, machine learning, data visualization, and database
+                management, enabling me to tackle complex analytical challenges across various industries.
+              </p>
+            </div>
 
-                <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                  <Button
-                    onClick={handleResumeDownload}
-                    className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-400 hover:to-orange-500 text-black font-semibold py-3 rounded-full flex items-center justify-center gap-2 shadow-lg hover:shadow-orange-500/25 transition-all duration-300"
-                  >
-                    <Download className="w-5 h-5" />
-                    Download Resume
-                  </Button>
-                </motion.div>
-              </CardContent>
-            </Card>
-          </motion.div>
-        </div>
+            {/* HIGHLIGHTS GRID */}
+            {/* CUSTOMIZABLE: Modify highlights */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {/* EXPERIENCE HIGHLIGHT */}
+              <div className="bg-gradient-to-br from-zinc-900/50 to-zinc-800/50 backdrop-blur-sm border border-zinc-700/50 rounded-xl p-4">
+                <div className="flex items-center gap-3 mb-2">
+                  <Briefcase className="w-5 h-5 text-orange-500" />
+                  <span className="font-semibold text-white">Experience</span>
+                </div>
+                <p className="text-xs sm:text-sm text-zinc-400">5+ Years in Data Analysis</p>
+              </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {achievements.map((achievement, index) => {
-            const Icon = achievement.icon
-            return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -10 }}
+              {/* EDUCATION HIGHLIGHT */}
+              <div className="bg-gradient-to-br from-zinc-900/50 to-zinc-800/50 backdrop-blur-sm border border-zinc-700/50 rounded-xl p-4">
+                <div className="flex items-center gap-3 mb-2">
+                  <GraduationCap className="w-5 h-5 text-blue-500" />
+                  <span className="font-semibold text-white">Education</span>
+                </div>
+                <p className="text-xs sm:text-sm text-zinc-400">MS in Data Science</p>
+              </div>
+
+              {/* LOCATION HIGHLIGHT */}
+              <div className="bg-gradient-to-br from-zinc-900/50 to-zinc-800/50 backdrop-blur-sm border border-zinc-700/50 rounded-xl p-4">
+                <div className="flex items-center gap-3 mb-2">
+                  <MapPin className="w-5 h-5 text-green-500" />
+                  <span className="font-semibold text-white">Location</span>
+                </div>
+                <p className="text-xs sm:text-sm text-zinc-400">Remote / Global</p>
+              </div>
+
+              {/* SPECIALIZATION HIGHLIGHT */}
+              <div className="bg-gradient-to-br from-zinc-900/50 to-zinc-800/50 backdrop-blur-sm border border-zinc-700/50 rounded-xl p-4">
+                <div className="flex items-center gap-3 mb-2">
+                  <Award className="w-5 h-5 text-purple-500" />
+                  <span className="font-semibold text-white">Focus</span>
+                </div>
+                <p className="text-xs sm:text-sm text-zinc-400">AI & Machine Learning</p>
+              </div>
+            </div>
+
+            {/* ACTION BUTTONS */}
+            {/* CUSTOMIZABLE: Modify button actions and text */}
+            <div className="flex flex-col sm:flex-row gap-4">
+              {/* DOWNLOAD RESUME BUTTON */}
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white border-0 transition-all duration-300 px-8 py-6 text-base group"
+                onClick={() => {
+                  // CUSTOMIZABLE: Add actual resume download link
+                  console.log("Download resume")
+                }}
               >
-                <Card className="h-full bg-gradient-to-br from-zinc-900/80 to-zinc-800/80 border border-zinc-700/50 hover:border-orange-500/30 transition-all duration-300 shadow-lg hover:shadow-xl backdrop-blur-sm">
-                  <CardContent className="p-6">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-zinc-800 to-zinc-700 flex items-center justify-center mb-4 shadow-lg">
-                      <Icon className="w-6 h-6 text-orange-500" />
-                    </div>
-                    <h3 className="bg-gradient-to-r from-white to-zinc-300 bg-clip-text text-transparent font-semibold text-lg mb-3">
-                      {achievement.title}
-                    </h3>
-                    <p className="text-zinc-400 text-sm leading-relaxed">{achievement.description}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            )
-          })}
+                <Download className="w-5 h-5 mr-2 group-hover:translate-y-1 transition-transform" />
+                Download Resume
+              </Button>
+
+              {/* CONTACT BUTTON */}
+              <Button
+                size="lg"
+                variant="outline"
+                className="bg-transparent border-zinc-700 text-white hover:bg-zinc-800 hover:border-zinc-600 transition-all duration-300 px-8 py-6 text-base"
+                onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+              >
+                Get In Touch
+              </Button>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

@@ -1,32 +1,32 @@
 # Data Analyst Portfolio Website
 
-A modern, interactive portfolio website built with Next.js, React, and Tailwind CSS, specifically designed for data analysts and business intelligence professionals.
+A modern, high-performance portfolio website built with Next.js 14, React, and Tailwind CSS, specifically designed for data analysts and business intelligence professionals. Optimized for 1920x1080 displays with full responsive design for all devices.
 
 ## 🚀 Features
 
-- **Responsive Design**: Fully responsive layout that works on all devices
-- **Dark Theme**: Sleek dark theme with orange accents
-- **Interactive UI**: Smooth animations and transitions
-- **Modern Tech Stack**: Built with Next.js, React, and Tailwind CSS
-- **Performance Optimized**: Fast loading times and optimized assets
-- **SEO Friendly**: Built with SEO best practices in mind
-- **Accessibility**: WCAG compliant for better accessibility
-- **Easy to Customize**: Well-organized code structure for easy customization
+- **Responsive Design**: Optimized for 1920x1080 with full mobile responsivity
+- **Dark Theme**: Professional dark theme with orange accent colors
+- **Performance Optimized**: Fast loading with optimized animations
+- **SEO Friendly**: Built with SEO best practices
+- **Accessibility**: WCAG compliant design
+- **Modern Tech Stack**: Next.js 14, TypeScript, Tailwind CSS, Framer Motion
 
-### Core Functionality
-- **Hover Effects**: Subtle scale and glow effects
-- **Particle Animations**: Interactive background elements
-- **Micro-interactions**: Enhancing user engagement
-- **Contact Form**: Functional contact form with email integration
+### Interactive Elements
+- **Animated Background**: Data-themed icons with delayed appearance (2s after load)
+- **Infinite Tech Carousel**: Smooth scrolling technology showcase
+- **Animated Statistics**: Counter animations with scroll triggers
+- **Smooth Scrolling**: Enhanced navigation experience
+- **Hover Effects**: Subtle interactions throughout
+- **Form Handling**: Contact form with validation
 
 ### Sections
-1. **Hero Section**: Eye-catching introduction with animated text and background particles
-2. **Tech Stack Carousel**: Interactive carousel showcasing technical skills
-3. **Statistics Section**: Animated statistics highlighting achievements
-4. **Skills Progress**: Animated progress bars for skill proficiency
-5. **Projects Showcase**: Featured data analysis projects with descriptions and links
-6. **About Section**: Professional background with downloadable resume options
-7. **Contact Form**: Contact form and social media links
+1. **Hero Section**: Professional introduction with call-to-action buttons
+2. **Tech Stack**: Infinite carousel showcasing technical expertise
+3. **Statistics**: Animated counters highlighting achievements
+4. **Projects**: Featured work with detailed descriptions
+5. **About**: Personal background and professional highlights
+6. **Contact**: Contact form and social media links
+7. **Footer**: Navigation and social links
 
 ## 🛠 Tech Stack
 
@@ -35,27 +35,30 @@ A modern, interactive portfolio website built with Next.js, React, and Tailwind 
 - **Styling**: Tailwind CSS
 - **Animations**: Framer Motion
 - **UI Components**: shadcn/ui
-- **Icons**: Lucide React
+- **Icons**: Lucide React + React Icons
+- **Deployment**: Vercel (recommended)
 
 ## 📁 Project Structure
 
 \`\`\`
 ├── app/
-│   ├── globals.css          # Global styles and custom CSS
-│   ├── layout.tsx           # Root layout component
+│   ├── globals.css          # Global styles and Tailwind imports
+│   ├── layout.tsx           # Root layout with metadata
 │   └── page.tsx             # Main page component
 ├── components/
 │   ├── ui/                  # shadcn/ui components
-│   ├── header.tsx           # Navigation header
-│   ├── hero-section.tsx     # Hero section with typing animation
-│   ├── tech-stack-section.tsx # Infinite carousel of technologies
-│   ├── stats-section.tsx    # Animated statistics counters
-│   ├── skills-progress.tsx  # Skill proficiency bars
+│   ├── unified-background.tsx # Animated background system
+│   ├── hero-section.tsx     # Hero section with introduction
+│   ├── tech-stack-section.tsx # Technology carousel
+│   ├── stats-section.tsx    # Animated statistics
 │   ├── projects-section.tsx # Projects showcase
 │   ├── about-section.tsx    # About me section
 │   ├── contact-section.tsx  # Contact form
 │   └── footer.tsx           # Footer component
-└── README.md               # This file
+├── public/                  # Static assets
+├── package.json            # Dependencies and scripts
+├── tailwind.config.ts      # Tailwind configuration
+└── README.md              # This file
 \`\`\`
 
 ## 🎨 Design System
@@ -64,71 +67,113 @@ A modern, interactive portfolio website built with Next.js, React, and Tailwind 
 - **Primary**: Black (#000000)
 - **Accent**: Orange (#f97316)
 - **Text**: White/Zinc gradients
-- **Cards**: Zinc-900/800 gradients
+- **Cards**: Zinc-900/800 with transparency
 - **Borders**: Zinc-700/600
 
 ### Typography
 - **Font**: Inter (system font fallback)
 - **Headings**: Gradient text effects
 - **Body**: Zinc color variations
+- **Responsive**: Scales from mobile to 4K displays
 
-### Animations
-- **Entrance**: Fade up with stagger
-- **Hover**: Subtle scale and glow effects
-- **Carousel**: Infinite horizontal scroll
-- **Counters**: Animated number counting
-- **Progress**: Animated bar filling
+### Responsive Breakpoints
+- **Mobile**: < 768px (optimized density)
+- **Tablet**: 768px - 1024px (medium density)
+- **Desktop**: 1024px - 1920px (full density)
+- **4K**: > 1920px (enhanced spacing)
 
-## 🔧 Customization Guide
+## ⚙️ Customization Guide
 
-### Updating Personal Information
-
-1. **Contact Email**: Update in `components/contact-section.tsx` and `components/footer.tsx`
-2. **Social Links**: Modify LinkedIn/GitHub URLs in `components/footer.tsx`
-3. **Professional Background**: Edit content in `components/about-section.tsx`
-4. **Hero Section**: Update name and tagline in `components/hero-section.tsx`
-5. **Projects Section**: Update project details in `components/projects-section.tsx`
-6. **Statistics Section**: Update statistics in `components/stats-section.tsx`
-
-### Modifying Tech Stack
-
-Edit the `techStack` array in `components/tech-stack-section.tsx`:
+### Background Animation Settings
 
 \`\`\`typescript
+// In components/unified-background.tsx
+
+// DELAY BEFORE APPEARANCE (milliseconds)
+const APPEARANCE_DELAY = 2000
+
+// DENSITY MULTIPLIERS
+const densityMultipliers = {
+  mobile: 0.3,    // 30% density on mobile
+  tablet: 0.6,    // 60% density on tablet
+  desktop: 1.0,   // 100% density on desktop
+}
+
+// SIZE CONFIGURATION
+const sizeConfig = {
+  mobile: { iconBase: 16, iconVariation: 4 },
+  tablet: { iconBase: 20, iconVariation: 6 },
+  desktop: { iconBase: 24, iconVariation: 8 }
+}
+
+// ANIMATION TIMING
+duration: 15 + (i % 3) * 5, // 15, 20, or 25 seconds
+\`\`\`
+
+### Personal Information Updates
+
+1. **Hero Section** (`components/hero-section.tsx`):
+   \`\`\`typescript
+   // Update name and tagline
+   <h1>Your Name</h1>
+   <h2>Your Professional Tagline</h2>
+   \`\`\`
+
+2. **Contact Information** (`components/contact-section.tsx`):
+   \`\`\`typescript
+   // Update contact details
+   email: "your.email@example.com"
+   phone: "+1 (555) 123-4567"
+   location: "Your Location"
+   \`\`\`
+
+3. **Social Links** (`components/footer.tsx`):
+   \`\`\`typescript
+   // Update social media URLs
+   linkedin: "https://linkedin.com/in/yourprofile"
+   github: "https://github.com/yourusername"
+   \`\`\`
+
+### Tech Stack Customization
+
+\`\`\`typescript
+// In components/tech-stack-section.tsx
 const techStack = [
-  { 
-    name: "Technology Name", 
-    icon: IconComponent, 
-    color: "from-color-400 to-color-500" 
+  {
+    name: "Technology Name",
+    icon: IconComponent,
+    color: "from-color-400 to-color-500"
   },
   // Add more technologies...
 ]
+
+// Carousel speed adjustment
+duration: 30, // Seconds for full cycle
 \`\`\`
 
-### Updating Projects
-
-Modify the `projects` array in `components/projects-section.tsx`:
+### Projects Configuration
 
 \`\`\`typescript
+// In components/projects-section.tsx
 const projects = [
   {
     title: "Project Title",
-    description: "Project description...",
+    description: "Detailed description...",
     tech: ["Tech1", "Tech2", "Tech3"],
     icon: IconComponent,
     image: "/path/to/image.jpg",
-    liveUrl: "https://live-demo.com",
-    githubUrl: "https://github.com/username/repo",
+    liveUrl: "https://demo.com",
+    githubUrl: "https://github.com/user/repo",
+    category: "Category"
   },
   // Add more projects...
 ]
 \`\`\`
 
-### Customizing Statistics
-
-Update the `stats` array in `components/stats-section.tsx`:
+### Statistics Updates
 
 \`\`\`typescript
+// In components/stats-section.tsx
 const stats = [
   {
     icon: IconComponent,
@@ -136,100 +181,130 @@ const stats = [
     value: 1000,
     suffix: "+",
     color: "from-color-400 to-color-500",
+    description: "Metric description"
   },
   // Add more stats...
 ]
 \`\`\`
 
-### Adjusting Skills
+## 🎯 Performance Optimization
 
-Modify the `skills` array in `components/skills-progress.tsx`:
+### Background Animation
+- **Mobile Optimization**: Reduced icon count and slower animations
+- **Delayed Loading**: 2-second delay prevents initial load impact
+- **GPU Acceleration**: Transform-based animations for smooth performance
+- **Responsive Density**: Automatic adjustment based on screen size
 
-\`\`\`typescript
-const skills = [
-  { 
-    name: "Skill Name", 
-    level: 95, 
-    color: "from-color-400 to-color-500" 
-  },
-  // Add more skills...
-]
-\`\`\`
+### Image Optimization
+- **Next.js Image**: Automatic optimization and lazy loading
+- **Placeholder Images**: Consistent aspect ratios
+- **WebP Support**: Modern image formats when available
 
-### Styling
+### Code Splitting
+- **Component-based**: Each section loads independently
+- **Dynamic Imports**: Reduced initial bundle size
+- **Tree Shaking**: Unused code elimination
 
-The project uses Tailwind CSS for styling. You can customize the theme in:
+## 📱 Mobile Optimization
 
-- `tailwind.config.ts`: Update theme colors and other configurations
-- `app/globals.css`: Update global styles and custom CSS
+### Responsive Features
+- **Touch-friendly**: Larger touch targets on mobile
+- **Optimized Animations**: Reduced motion for better performance
+- **Readable Typography**: Proper scaling across all devices
+- **Fast Loading**: Optimized for mobile networks
 
-## 🎯 Animation Configuration
-
-### Carousel Speed
-Adjust carousel speed in `components/tech-stack-section.tsx`:
-\`\`\`typescript
-transition={{
-  duration: 25, // Increase for slower, decrease for faster
-  ease: "linear",
-}}
-\`\`\`
-
-### Counter Animation
-Modify counter duration in `components/stats-section.tsx`:
-\`\`\`typescript
-<AnimatedCounter value={stat.value} duration={2000} />
-\`\`\`
-
-### Hover Effects
-Customize hover animations throughout components:
-\`\`\`typescript
-whileHover={{ scale: 1.05, y: -5 }}
-transition={{ type: "spring", stiffness: 400, damping: 25 }}
-\`\`\`
-
-## 📱 Responsive Breakpoints
-
-- **Mobile**: < 768px
-- **Tablet**: 768px - 1024px
-- **Desktop**: > 1024px
-
-## 🔍 SEO Optimization
-
-Update metadata in `app/layout.tsx`:
-\`\`\`typescript
-export const metadata: Metadata = {
-  title: "Your Name - Data Analyst",
-  description: "Your professional description...",
-}
-\`\`\`
+### Mobile-specific Adjustments
+- **Reduced Icon Density**: 30% of desktop density
+- **Simplified Animations**: Fewer complex effects
+- **Optimized Images**: Smaller sizes for mobile viewports
+- **Touch Navigation**: Smooth scrolling and touch interactions
 
 ## 🚀 Deployment
 
 ### Vercel (Recommended)
-1. Push code to GitHub
+1. Push code to GitHub repository
 2. Connect repository to Vercel
-3. Deploy automatically
+3. Deploy automatically with optimizations
 
-### Other Platforms
-1. Build: `npm run build`
-2. Deploy the `out` folder
+### Manual Deployment
+\`\`\`bash
+# Build the project
+npm run build
 
-## 🐛 Common Issues
+# Start production server
+npm start
+\`\`\`
 
-### Carousel Performance
-If carousel stutters:
-- Reduce particle count in background animations
-- Adjust `will-change` properties in CSS
+### Environment Variables
+\`\`\`env
+# Add any required environment variables
+NEXT_PUBLIC_SITE_URL=https://yoursite.com
+\`\`\`
 
-### Animation Lag
-For better performance:
-- Use `transform3d(0,0,0)` for GPU acceleration
-- Reduce motion on mobile devices
+## 🔧 Development
 
-### Contact Form
-The contact form opens the default email client. For server-side handling:
-1. Add API route in `app/api/contact/route.ts`
-2. Update form submission in `components/contact-section.tsx`
+### Getting Started
+\`\`\`bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Run linting
+npm run lint
+\`\`\`
+
+### Development Scripts
+- `npm run dev`: Start development server
+- `npm run build`: Build for production
+- `npm run start`: Start production server
+- `npm run lint`: Run ESLint
+
+## 🎨 Customization Examples
+
+### Changing Color Scheme
+\`\`\`css
+/* In app/globals.css */
+:root {
+  --primary: #your-color;
+  --accent: #your-accent;
+}
+\`\`\`
+
+### Adding New Sections
+1. Create component in `components/`
+2. Add to main page in `app/page.tsx`
+3. Update navigation in `components/header.tsx`
+
+### Modifying Animations
+\`\`\`typescript
+// Adjust animation timing
+transition={{
+  duration: 0.6,        // Animation duration
+  delay: 0.2,          // Delay before start
+  ease: "easeInOut"    // Easing function
+}}
+\`\`\`
+
+## 🐛 Troubleshooting
+
+### Common Issues
+
+**Slow Performance on Mobile**
+- Reduce background icon density in `unified-background.tsx`
+- Increase animation durations for smoother motion
+
+**Layout Issues on Different Screens**
+- Check responsive breakpoints in Tailwind classes
+- Test on various screen sizes
+
+**Animation Stuttering**
+- Ensure GPU acceleration with `transform3d(0,0,0)`
+- Reduce number of simultaneous animations
 
 ## 📄 License
 
@@ -237,13 +312,20 @@ This project is open source and available under the MIT License.
 
 ## 🤝 Contributing
 
-Feel free to submit issues and enhancement requests!
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
 
-## Acknowledgments
+## 📞 Support
 
-- Design inspired by modern portfolio trends
-- Icons from [Lucide React](https://lucide.dev/)
+For questions or support:
+- Email: caio.seniuk@email.com
+- LinkedIn: [Caio Seniuk](https://linkedin.com/in/caioseniuk)
+- GitHub: [Issues](https://github.com/caioseniuk/portfolio/issues)
 
 ---
 
 **Built with ❤️ for data professionals**
+
+*Optimized for 1920x1080 displays with full responsive design for all devices*

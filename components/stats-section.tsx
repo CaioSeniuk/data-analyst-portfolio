@@ -1,11 +1,11 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { useEffect, useState } from "react"
-import { Card, CardContent } from "@/components/ui/card"
+import { motion, useInView } from "framer-motion"
+import { useRef, useEffect, useState } from "react"
 import { TrendingUp, Users, Database } from "lucide-react"
-import ScrollTriggeredAnimation from "./scroll-triggered-animation"
 
+// STATISTICS CONFIGURATION - UPDATED AS REQUESTED
+// CUSTOMIZABLE: Modify statistics here
 const stats = [
   {
     icon: Database,
@@ -17,8 +17,8 @@ const stats = [
   {
     icon: TrendingUp,
     label: "Performance",
-    sublabel: "through data driven decision making",
-    value: 89,
+    sublabel: "Through Data-Driven Decision Making",
+    value: 50,
     suffix: "%",
     color: "from-green-400 to-emerald-500",
   },
@@ -31,79 +31,116 @@ const stats = [
   },
 ]
 
-function AnimatedCounter({ value, duration = 2000 }: { value: number; duration?: number }) {
-  const [count, setCount] = useState(0)
-
-  useEffect(() => {
-    let startTime: number
-    let animationFrame: number
-
-    const animate = (timestamp: number) => {
-      if (!startTime) startTime = timestamp
-      const progress = Math.min((timestamp - startTime) / duration, 1)
-
-      setCount(Math.floor(progress * value))
-
-      if (progress < 1) {
-        animationFrame = requestAnimationFrame(animate)
-      }
-    }
-
-    animationFrame = requestAnimationFrame(animate)
-    return () => cancelAnimationFrame(animationFrame)
-  }, [value, duration])
-
-  return <span>{count.toLocaleString()}</span>
-}
-
 export default function StatsSection() {
   return (
-    <section className="py-20 px-6 relative">
-      <div className="max-w-6xl mx-auto relative z-10">
-        <ScrollTriggeredAnimation animation="fadeUp" className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-white via-zinc-100 to-zinc-300 bg-clip-text text-transparent">
-              Impact by{" "}
-            </span>
-            <span className="bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">
+    <section className="py-20 lg:py-32 px-4 sm:px-6 lg:px-8 relative z-10">
+      {/* RESPONSIVE CONTAINER */}
+      {/* Optimized for 1920x1080 with full responsivity */}
+      <div className="max-w-7xl mx-auto">
+        {/* SECTION HEADER */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center mb-16 lg:mb-20"
+        >
+          {/* SECTION TITLE - SMALLER FONT */}
+          {/* CUSTOMIZABLE: Modify section title */}
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+            <span className="text-white">Impact by </span>
+            <span className="bg-gradient-to-r from-orange-500 to-orange-400 bg-clip-text text-transparent">
               Numbers
             </span>
           </h2>
-          <p className="text-xl bg-gradient-to-r from-zinc-300 to-zinc-500 bg-clip-text text-transparent max-w-2xl mx-auto">
-            Measurable results that drive business success
-          </p>
-        </ScrollTriggeredAnimation>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-          {stats.map((stat, index) => {
-            const Icon = stat.icon
-            return (
-              <ScrollTriggeredAnimation key={index} animation="fadeUp" delay={index * 0.2}>
-                <motion.div whileHover={{ y: -10, scale: 1.02 }}>
-                  <Card className="group relative bg-black/20 backdrop-blur-xl border border-white/10 hover:border-orange-500/30 transition-all duration-500 shadow-2xl overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    <CardContent className="p-8 text-center relative z-10">
-                      <motion.div
-                        className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${stat.color} flex items-center justify-center mx-auto mb-6 shadow-2xl`}
-                        whileHover={{ rotate: 360, scale: 1.1 }}
-                        transition={{ duration: 0.6 }}
-                      >
-                        <Icon className="w-8 h-8 text-white" />
-                      </motion.div>
-                      <div className="text-4xl font-bold bg-gradient-to-r from-white to-zinc-300 bg-clip-text text-transparent mb-3">
-                        <AnimatedCounter value={stat.value} />
-                        {stat.suffix}
-                      </div>
-                      <p className="text-zinc-300 text-sm font-medium mb-1">{stat.label}</p>
-                      {stat.sublabel && <p className="text-zinc-500 text-xs">{stat.sublabel}</p>}
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              </ScrollTriggeredAnimation>
-            )
-          })}
+          {/* SECTION DESCRIPTION - SMALLER FONT */}
+          {/* CUSTOMIZABLE: Update description */}
+          <p className="text-sm sm:text-base md:text-lg text-zinc-400 max-w-3xl mx-auto">
+            Delivering measurable results through data-driven insights
+          </p>
+        </motion.div>
+
+        {/* STATS GRID - 3 CARDS AS REQUESTED */}
+        {/* RESPONSIVE: 1 column on mobile, 3 on desktop */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto">
+          {stats.map((stat, index) => (
+            <StatCard key={index} stat={stat} index={index} />
+          ))}
         </div>
       </div>
     </section>
+  )
+}
+
+// STAT CARD COMPONENT
+// CUSTOMIZABLE: Modify card design and animations
+function StatCard({ stat, index }: { stat: any; index: number }) {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true })
+  const [count, setCount] = useState(0)
+
+  // ANIMATED COUNTER EFFECT
+  // CUSTOMIZABLE: Adjust animation duration and easing
+  useEffect(() => {
+    if (isInView) {
+      const duration = 2000 // Animation duration in milliseconds
+      const steps = 60 // Number of animation steps
+      const increment = stat.value / steps
+      const stepDuration = duration / steps
+
+      let currentCount = 0
+      const timer = setInterval(() => {
+        currentCount += increment
+        if (currentCount >= stat.value) {
+          setCount(stat.value)
+          clearInterval(timer)
+        } else {
+          setCount(Math.floor(currentCount))
+        }
+      }, stepDuration)
+
+      return () => clearInterval(timer)
+    }
+  }, [isInView, stat.value])
+
+  const Icon = stat.icon
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: index * 0.1 }}
+      viewport={{ once: true }}
+      className="group"
+    >
+      {/* CARD CONTAINER */}
+      <div className="relative bg-gradient-to-br from-zinc-900/50 to-zinc-800/50 backdrop-blur-sm border border-zinc-700/50 rounded-2xl p-6 lg:p-8 text-center hover:border-zinc-600/50 transition-all duration-300">
+        {/* ICON */}
+        {/* CUSTOMIZABLE: Adjust icon styling */}
+        <div
+          className={`w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br ${stat.color} p-4 group-hover:scale-110 transition-transform duration-300`}
+        >
+          <Icon className="w-full h-full text-white" />
+        </div>
+
+        {/* ANIMATED NUMBER */}
+        {/* CUSTOMIZABLE: Modify number formatting */}
+        <div className="mb-2">
+          <span className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white">{count.toLocaleString()}</span>
+          <span className="text-2xl sm:text-3xl lg:text-4xl font-bold text-orange-500">{stat.suffix}</span>
+        </div>
+
+        {/* STAT LABEL - SMALLER FONT */}
+        <h3 className="text-base sm:text-lg font-semibold text-white mb-2">{stat.label}</h3>
+
+        {/* STAT SUBLABEL - SMALLER FONT */}
+        {stat.sublabel && <p className="text-xs sm:text-sm text-zinc-400">{stat.sublabel}</p>}
+
+        {/* HOVER GLOW EFFECT */}
+        <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-orange-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      </div>
+    </motion.div>
   )
 }
