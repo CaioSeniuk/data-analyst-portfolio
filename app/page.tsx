@@ -9,29 +9,39 @@ import ProjectsSection from "@/components/projects-section"
 import AboutSection from "@/components/about-section"
 import ContactSection from "@/components/contact-section"
 import Footer from "@/components/footer"
-import ScrollProgress from "@/components/scroll-progress"
 import ScrollToTop from "@/components/scroll-to-top"
-import ReadingProgress from "@/components/reading-progress"
 import SmoothScrollWrapper from "@/components/smooth-scroll-wrapper"
 import UnifiedBackground from "@/components/unified-background"
 
 export default function Home() {
   const [scrollY, setScrollY] = useState(0)
   const [scrollProgress, setScrollProgress] = useState(0)
+  const [scrollDirection, setScrollDirection] = useState<"up" | "down">("up")
+  const [lastScrollY, setLastScrollY] = useState(0)
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrollY(window.scrollY)
+      const currentScrollY = window.scrollY
+
+      // Determine scroll direction
+      if (currentScrollY > lastScrollY) {
+        setScrollDirection("down")
+      } else {
+        setScrollDirection("up")
+      }
+
+      setLastScrollY(currentScrollY)
+      setScrollY(currentScrollY)
 
       // Calculate scroll progress
       const totalHeight = document.documentElement.scrollHeight - window.innerHeight
-      const progress = (window.scrollY / totalHeight) * 100
+      const progress = (currentScrollY / totalHeight) * 100
       setScrollProgress(Math.min(progress, 100))
     }
 
     window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+  }, [lastScrollY])
 
   return (
     <SmoothScrollWrapper>
@@ -41,9 +51,8 @@ export default function Home() {
 
         {/* Content with relative positioning */}
         <div className="relative z-10">
-          <ReadingProgress />
+          {/* REMOVED: ReadingProgress and ScrollProgress components */}
           <Header scrollY={scrollY} scrollProgress={scrollProgress} />
-          <ScrollProgress sections={["home", "skills", "projects", "about", "contact"]} />
           <main>
             <HeroSection />
             <TechStackSection />
