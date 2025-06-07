@@ -6,8 +6,8 @@ import { Github, Linkedin, Mail } from "lucide-react"
 
 export default function Footer() {
   return (
-    <footer className="py-12 px-6 border-t border-zinc-900">
-      <div className="max-w-6xl mx-auto">
+    <footer className="py-12 px-6 border-t border-zinc-900 relative">
+      <div className="max-w-6xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

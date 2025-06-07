@@ -48,33 +48,7 @@ export default function ContactSection() {
   }
 
   return (
-    <section id="contact" className="py-20 px-6 relative overflow-hidden">
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        {[...Array(30)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 bg-orange-500/30 rounded-full"
-            animate={{
-              scale: [0, 1, 0],
-              opacity: [0, 1, 0],
-            }}
-            transition={{
-              duration: Math.random() * 3 + 2,
-              repeat: Number.POSITIVE_INFINITY,
-              delay: Math.random() * 2,
-            }}
-            style={{
-              left: Math.random() * 100 + "%",
-              top: Math.random() * 100 + "%",
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Background gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 via-transparent to-orange-500/10 pointer-events-none" />
-
+    <section id="contact" className="py-20 px-6 relative">
       <div className="max-w-4xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -43,10 +43,7 @@ export default function AboutSection() {
   }
 
   return (
-    <section id="about" className="py-20 px-6 bg-gradient-to-b from-zinc-950 to-black relative">
-      {/* Background gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-orange-500/5 via-transparent to-orange-500/5 pointer-events-none" />
-
+    <section id="about" className="py-20 px-6 relative">
       <div className="max-w-6xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -13,6 +13,7 @@ import ScrollProgress from "@/components/scroll-progress"
 import ScrollToTop from "@/components/scroll-to-top"
 import ReadingProgress from "@/components/reading-progress"
 import SmoothScrollWrapper from "@/components/smooth-scroll-wrapper"
+import UnifiedBackground from "@/components/unified-background"
 
 export default function Home() {
   const [scrollY, setScrollY] = useState(0)
@@ -34,20 +35,26 @@ export default function Home() {
 
   return (
     <SmoothScrollWrapper>
-      <div className="min-h-screen bg-black relative">
-        <ReadingProgress />
-        <Header scrollY={scrollY} scrollProgress={scrollProgress} />
-        <ScrollProgress sections={["home", "skills", "projects", "about", "contact"]} />
-        <main>
-          <HeroSection />
-          <TechStackSection />
-          <StatsSection />
-          <ProjectsSection />
-          <AboutSection />
-          <ContactSection />
-        </main>
-        <Footer />
-        <ScrollToTop />
+      <div className="min-h-screen relative">
+        {/* Unified background for entire site */}
+        <UnifiedBackground />
+
+        {/* Content with relative positioning */}
+        <div className="relative z-10">
+          <ReadingProgress />
+          <Header scrollY={scrollY} scrollProgress={scrollProgress} />
+          <ScrollProgress sections={["home", "skills", "projects", "about", "contact"]} />
+          <main>
+            <HeroSection />
+            <TechStackSection />
+            <StatsSection />
+            <ProjectsSection />
+            <AboutSection />
+            <ContactSection />
+          </main>
+          <Footer />
+          <ScrollToTop />
+        </div>
       </div>
     </SmoothScrollWrapper>
   )
