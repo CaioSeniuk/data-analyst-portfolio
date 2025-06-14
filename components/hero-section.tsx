@@ -6,7 +6,7 @@ import { ArrowRight } from "lucide-react"
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
       {/* RESPONSIVE CONTAINER */}
       {/* Optimized for 1920x1080 with full responsivity */}
       <div className="max-w-7xl mx-auto text-center z-10">
@@ -42,7 +42,7 @@ export default function HeroSection() {
         >
           <span className="text-white">Transforming Data into</span>
           <br />
-          <span className="text-white">Intelligent Decisions.</span>
+          <span className="text-white">Valuable Insights.</span>
         </motion.h2>
 
         {/* DESCRIPTION - SMALLER FONT */}

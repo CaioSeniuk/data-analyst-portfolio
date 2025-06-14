@@ -53,7 +53,7 @@ export default function Header({ scrollY, scrollProgress }: HeaderProps) {
       >
         <nav className="flex items-center justify-center space-x-8">
           <motion.a
-            href="#home"
+            href="#hero"
             className="text-zinc-300 hover:text-white transition-all duration-500 text-sm font-medium relative"
             whileHover={{ scale: 1.1 }}
             transition={{ duration: 0.3, ease: "easeOut" }}

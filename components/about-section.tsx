@@ -7,10 +7,10 @@ import Image from "next/image"
 
 export default function AboutSection() {
   return (
-    <section id="about" className="py-20 lg:py-32 px-4 sm:px-6 lg:px-8 relative z-10">
+    <section className="py-20 lg:py-32 px-4 sm:px-6 lg:px-8 relative z-10">
       {/* RESPONSIVE CONTAINER */}
       {/* Optimized for 1920x1080 with full responsivity */}
-      <div className="max-w-7xl mx-auto">
+      <div id="about" className="max-w-7xl mx-auto p-10">
         {/* SECTION HEADER */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -47,9 +47,8 @@ export default function AboutSection() {
             {/* PROFILE IMAGE CONTAINER */}
             {/* CUSTOMIZABLE: Replace with actual profile image */}
             <div className="relative w-full max-w-md mx-auto lg:max-w-none">
-              <div className="aspect-square relative rounded-3xl overflow-hidden bg-gradient-to-br from-zinc-900/50 to-zinc-800/50 backdrop-blur-sm border border-zinc-700/50">
-                <Image
-                  src="/placeholder.svg?height=500&width=500"
+              <div className="aspect-square relative rounded-3xl overflow-hidden bg-gradient-to-br from-zinc-900/50 to-zinc-800/50 backdrop-blur-sm border border-zinc-700/50">                <Image
+                  src="/profile-photo.jpeg"
                   alt="Caio Seniuk - Data Analyst"
                   fill
                   className="object-cover"
@@ -84,11 +83,12 @@ export default function AboutSection() {
             <div className="space-y-4">
               <h3 className="text-xl sm:text-2xl font-bold text-white">Data-Driven Problem Solver</h3>
               <p className="text-sm sm:text-base text-zinc-400 leading-relaxed">
-                With over 5 years of experience in data analysis and business intelligence, I specialize in transforming
-                raw data into strategic insights that drive business growth and operational efficiency.
+                Data Analyst and Software Engineer with extensive experience in IoT data processing and agricultural automation systems, specialized in data-driven decision making, 
+                statistical analysis, and real-time data collection from embedded systems. Expert in transforming raw sensor data into actionable business 
+                insights using advanced analytics packages (Python, Matlab) and creating comprehensive data visualizations through Power BI, Tableau, and Excel.
               </p>
               <p className="text-sm sm:text-base text-zinc-400 leading-relaxed">
-                My expertise spans across statistical analysis, machine learning, data visualization, and database
+                My expertise spans across statistical analysis, machine learning, data visualization and database
                 management, enabling me to tackle complex analytical challenges across various industries.
               </p>
             </div>
@@ -102,7 +102,7 @@ export default function AboutSection() {
                   <Briefcase className="w-5 h-5 text-orange-500" />
                   <span className="font-semibold text-white">Experience</span>
                 </div>
-                <p className="text-xs sm:text-sm text-zinc-400">5+ Years in Data Analysis</p>
+                <p className="text-xs sm:text-sm text-zinc-400">Built Real Projects for Customers using Data that increased perfomance</p>
               </div>
 
               {/* EDUCATION HIGHLIGHT */}
@@ -111,7 +111,7 @@ export default function AboutSection() {
                   <GraduationCap className="w-5 h-5 text-blue-500" />
                   <span className="font-semibold text-white">Education</span>
                 </div>
-                <p className="text-xs sm:text-sm text-zinc-400">MS in Data Science</p>
+                <p className="text-xs sm:text-sm text-zinc-400">Software Engineer (PUCPR) & Data Analyst (Analyst Builder - Alex Freberg)  </p>
               </div>
 
               {/* LOCATION HIGHLIGHT */}
@@ -129,21 +129,17 @@ export default function AboutSection() {
                   <Award className="w-5 h-5 text-purple-500" />
                   <span className="font-semibold text-white">Focus</span>
                 </div>
-                <p className="text-xs sm:text-sm text-zinc-400">AI & Machine Learning</p>
+                <p className="text-xs sm:text-sm text-zinc-400">Data Analysis & Data-Driven Insights</p>
               </div>
             </div>
 
             {/* ACTION BUTTONS */}
             {/* CUSTOMIZABLE: Modify button actions and text */}
             <div className="flex flex-col sm:flex-row gap-4">
-              {/* DOWNLOAD RESUME BUTTON */}
-              <Button
+              {/* DOWNLOAD RESUME BUTTON */}              <Button
                 size="lg"
                 className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white border-0 transition-all duration-300 px-8 py-6 text-base group"
-                onClick={() => {
-                  // CUSTOMIZABLE: Add actual resume download link
-                  console.log("Download resume")
-                }}
+                onClick={() => window.open("/Resume-Caio-Seniuk.pdf", "_blank")}
               >
                 <Download className="w-5 h-5 mr-2 group-hover:translate-y-1 transition-transform" />
                 Download Resume

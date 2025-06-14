@@ -1,5 +1,6 @@
 "use client"
 
+import { table } from "console"
 import { motion } from "framer-motion"
 import {
   Database,
@@ -17,22 +18,26 @@ import {
   Monitor,
   HardDrive,
   Play,
+  Brain,
+  Table,
 } from "lucide-react"
 
 // TECH STACK CONFIGURATION
 // CUSTOMIZABLE: Add, remove, or modify technologies here
 const techStack = [
   // DATA ANALYSIS & VISUALIZATION
-  { name: "Python", icon: Code, color: "from-blue-400 to-yellow-400" },
+  { name: "Python", icon: Code, color: "from-blue-400 to-blue-400" },
   { name: "R", icon: BarChart3, color: "from-blue-500 to-blue-600" },
+  { name: "Pandas", icon: Brain, color: "from-purple-400 to-pink-400" },
   { name: "Tableau", icon: Activity, color: "from-blue-400 to-orange-400" },
   { name: "Power BI", icon: BarChart3, color: "from-yellow-400 to-orange-500" },
-  { name: "Pandas", icon: Database, color: "from-purple-400 to-pink-400" },
-  { name: "NumPy", icon: Calculator, color: "from-blue-400 to-cyan-400" },
+  { name: "Excel", icon: Table, color: "from-purple-400 to-pink-400" },
+
+  // { name: "NumPy", icon: Brain, color: "from-blue-400 to-cyan-400" },
 
   // DATABASES
-  { name: "MySQL", icon: Database, color: "from-blue-500 to-orange-500" },
-  { name: "PostgreSQL", icon: HardDrive, color: "from-blue-400 to-blue-600" },
+  { name: "SQL", icon: Server, color: "from-blue-500 to-orange-500" },
+  // { name: "PostgreSQL", icon: HardDrive, color: "from-blue-400 to-blue-600" },
   // { name: "MongoDB", icon: Layers, color: "from-green-400 to-green-600" }, // COMMENTED OUT AS REQUESTED
 
   // CLOUD PLATFORMS

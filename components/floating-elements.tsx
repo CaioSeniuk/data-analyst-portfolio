@@ -31,7 +31,7 @@ export default function FloatingElements({ sectionId = "home" }: FloatingElement
         // Fixed positions and slower, predictable animations
         const startX = (i % 4) * 300 + 100
         const startY = Math.floor(i / 4) * 200 + 100
-        const endX = startX + (i % 2 === 0 ? 150 : -150)
+        const endX = startX + (i % 2 === 0 ? 250 : -150)
         const endY = startY + (i % 3 === 0 ? 100 : -100)
 
         return (

@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Heart, Linkedin, Github, Twitter, Mail } from "lucide-react"
+import { Heart, Linkedin, Github, Mail } from "lucide-react"
 
 export default function Footer() {
   return (
@@ -121,16 +121,10 @@ export default function Footer() {
               >
                 <Github className="w-5 h-5" />
               </a>
-              <a
-                href="https://twitter.com/caioseniuk"
+                <a
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=caiohseniuk@gmail.com&su=Hello%20Caio&body=I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect!"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-zinc-800/50 border border-zinc-700/50 rounded-lg flex items-center justify-center text-zinc-400 hover:text-white hover:bg-blue-500 hover:border-blue-500 transition-all duration-300"
-              >
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a
-                href="mailto:caio.seniuk@email.com"
                 className="w-10 h-10 bg-zinc-800/50 border border-zinc-700/50 rounded-lg flex items-center justify-center text-zinc-400 hover:text-white hover:bg-orange-600 hover:border-orange-600 transition-all duration-300"
               >
                 <Mail className="w-5 h-5" />

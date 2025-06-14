@@ -103,7 +103,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <p className="font-semibold text-white text-sm">Email</p>
-                  <p className="text-zinc-400 text-xs sm:text-sm">caio.seniuk@email.com</p>
+                  <p className="text-zinc-400 text-xs sm:text-sm">caiohseniuk@gmail.com</p>
                 </div>
               </div>
 
@@ -114,7 +114,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <p className="font-semibold text-white text-sm">Phone</p>
-                  <p className="text-zinc-400 text-xs sm:text-sm">+1 (555) 123-4567</p>
+                  <p className="text-zinc-400 text-xs sm:text-sm">+55 (41) 98809-4731</p>
                 </div>
               </div>
 
@@ -155,15 +155,6 @@ export default function ContactSection() {
                   <Github className="w-4 h-4" />
                 </Button>
 
-                {/* TWITTER */}
-                <Button
-                  size="sm"
-                  variant="outline"
-                  className="bg-transparent border-zinc-700 text-zinc-300 hover:bg-blue-500 hover:border-blue-500 hover:text-white transition-all duration-300"
-                  onClick={() => window.open("https://twitter.com/caioseniuk", "_blank")}
-                >
-                  <Twitter className="w-4 h-4" />
-                </Button>
               </div>
             </div>
           </motion.div>

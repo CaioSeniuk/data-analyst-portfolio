@@ -1,5 +1,5 @@
 "use client"
-
+import {Card, CardBody} from "@heroui/react";
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { ExternalLink, Github, BarChart3, Database, Brain, TrendingUp, PieChart, LineChart } from "lucide-react"
@@ -7,74 +7,76 @@ import Image from "next/image"
 
 // PROJECTS CONFIGURATION
 // CUSTOMIZABLE: Add, remove, or modify projects here
-const projects = [
-  {
-    title: "Sales Analytics Dashboard",
-    description:
-      "Comprehensive dashboard analyzing sales performance across multiple regions with predictive forecasting and trend analysis.",
-    tech: ["Python", "Tableau", "SQL", "Machine Learning"],
-    icon: BarChart3,
-    image: "/placeholder.svg?height=300&width=500",
-    liveUrl: "#",
-    githubUrl: "#",
-    category: "Business Intelligence",
-  },
-  {
-    title: "Customer Segmentation Analysis",
-    description:
-      "Advanced clustering analysis to identify customer segments and optimize marketing strategies using machine learning algorithms.",
-    tech: ["Python", "Scikit-learn", "Pandas", "Matplotlib"],
-    icon: Database,
-    image: "/placeholder.svg?height=300&width=500",
-    liveUrl: "#",
-    githubUrl: "#",
-    category: "Machine Learning",
-  },
-  {
-    title: "Predictive Maintenance System",
-    description:
-      "AI-powered system for predicting equipment failures and optimizing maintenance schedules to reduce downtime.",
-    tech: ["Python", "TensorFlow", "AWS", "Docker"],
-    icon: Brain,
-    image: "/placeholder.svg?height=300&width=500",
-    liveUrl: "#",
-    githubUrl: "#",
-    category: "AI/ML",
-  },
-  {
-    title: "Financial Risk Assessment",
-    description:
-      "Comprehensive risk analysis model for financial portfolios with real-time monitoring and alert systems.",
-    tech: ["R", "Power BI", "Azure", "SQL Server"],
-    icon: TrendingUp,
-    image: "/placeholder.svg?height=300&width=500",
-    liveUrl: "#",
-    githubUrl: "#",
-    category: "Finance",
-  },
-  {
-    title: "Market Research Analytics",
-    description:
-      "Deep dive analysis of market trends and consumer behavior patterns using advanced statistical methods.",
-    tech: ["Python", "Jupyter", "Plotly", "PostgreSQL"],
-    icon: PieChart,
-    image: "/placeholder.svg?height=300&width=500",
-    liveUrl: "#",
-    githubUrl: "#",
-    category: "Market Research",
-  },
-  {
-    title: "Supply Chain Optimization",
-    description:
-      "Data-driven optimization of supply chain operations resulting in 25% cost reduction and improved efficiency.",
-    tech: ["Python", "Apache Spark", "Tableau", "MongoDB"],
-    icon: LineChart,
-    image: "/placeholder.svg?height=300&width=500",
-    liveUrl: "#",
-    githubUrl: "#",
-    category: "Operations",
-  },
-]
+
+
+const projects = []
+  // {
+  //   title: "Sales Analytics Dashboard",
+  //   description:
+  //     "Comprehensive dashboard analyzing sales performance across multiple regions with predictive forecasting and trend analysis.",
+  //   tech: ["Python", "Tableau", "SQL", "Machine Learning"],
+  //   icon: BarChart3,
+  //   image: "/placeholder.svg?height=300&width=500",
+  //   liveUrl: "#",
+  //   githubUrl: "#",
+  //   category: "Business Intelligence",
+  // },
+  // {
+  //   title: "Customer Segmentation Analysis",
+  //   description:
+  //     "Advanced clustering analysis to identify customer segments and optimize marketing strategies using machine learning algorithms.",
+  //   tech: ["Python", "Scikit-learn", "Pandas", "Matplotlib"],
+  //   icon: Database,
+  //   image: "/placeholder.svg?height=300&width=500",
+  //   liveUrl: "#",
+  //   githubUrl: "#",
+  //   category: "Machine Learning",
+  // },
+  // {
+  //   title: "Predictive Maintenance System",
+  //   description:
+  //     "AI-powered system for predicting equipment failures and optimizing maintenance schedules to reduce downtime.",
+  //   tech: ["Python", "TensorFlow", "AWS", "Docker"],
+  //   icon: Brain,
+  //   image: "/placeholder.svg?height=300&width=500",
+  //   liveUrl: "#",
+  //   githubUrl: "#",
+  //   category: "AI/ML",
+  // },
+  // {
+  //   title: "Financial Risk Assessment",
+  //   description:
+  //     "Comprehensive risk analysis model for financial portfolios with real-time monitoring and alert systems.",
+  //   tech: ["R", "Power BI", "Azure", "SQL Server"],
+  //   icon: TrendingUp,
+  //   image: "/placeholder.svg?height=300&width=500",
+  //   liveUrl: "#",
+  //   githubUrl: "#",
+  //   category: "Finance",
+  // },
+  // {
+  //   title: "Market Research Analytics",
+  //   description:
+  //     "Deep dive analysis of market trends and consumer behavior patterns using advanced statistical methods.",
+  //   tech: ["Python", "Jupyter", "Plotly", "PostgreSQL"],
+  //   icon: PieChart,
+  //   image: "/placeholder.svg?height=300&width=500",
+  //   liveUrl: "#",
+  //   githubUrl: "#",
+  //   category: "Market Research",
+  // },
+  // {
+  //   title: "Supply Chain Optimization",
+  //   description:
+  //     "Data-driven optimization of supply chain operations resulting in 25% cost reduction and improved efficiency.",
+  //   tech: ["Python", "Apache Spark", "Tableau", "MongoDB"],
+  //   icon: LineChart,
+  //   image: "/placeholder.svg?height=300&width=500",
+  //   liveUrl: "#",
+  //   githubUrl: "#",
+  //   category: "Operations",
+  // },
+
 
 export default function ProjectsSection() {
   return (
@@ -100,10 +102,23 @@ export default function ProjectsSection() {
           </h2>
 
           {/* SECTION DESCRIPTION - SMALLER FONT */}
-          {/* CUSTOMIZABLE: Update description */}
-          <p className="text-sm sm:text-base md:text-lg text-zinc-400 max-w-3xl mx-auto">
+          {/* CUSTOMIZABLE: Update description */}          <p className="text-sm sm:text-base md:text-lg text-zinc-400 max-w-3xl mx-auto">
             Showcasing impactful data analysis projects that drive business value
           </p>
+        </motion.div>
+
+        {/* COMING SOON CARD */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="max-w-2xl mx-auto mb-16"
+        >
+          <div className="relative bg-gradient-to-br from-zinc-900/50 to-zinc-800/50 backdrop-blur-sm border border-zinc-700/50 rounded-2xl overflow-hidden hover:border-orange-500/30 transition-all duration-300 p-8 text-center">
+            <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">Coming Soon</h3>
+            <p className="text-zinc-400">New exciting projects are in development. Stay tuned!</p>
+          </div>
         </motion.div>
 
         {/* PROJECTS GRID */}
@@ -199,7 +214,7 @@ function ProjectCard({ project, index }: { project: any; index: number }) {
             </Button>
           </div>
         </div>
-
+       
         {/* HOVER GLOW EFFECT */}
         <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
       </div>
